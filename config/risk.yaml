@@ -1,0 +1,38 @@
+# ATLAS Risk Configuration (Immutable Runtime Rules)
+capital:
+  max_position_pct: 0.03
+  max_sector_exposure_pct: 0.15
+  max_gross_exposure_pct: 0.60
+  max_correlated_positions: 3
+  correlation_threshold: 0.70
+
+loss_limits:
+  max_daily_loss_pct: 0.015
+  max_weekly_loss_pct: 0.04
+  max_drawdown_pct: 0.08
+
+kelly:
+  enabled: true
+  fraction: 0.25
+  maximum_allocation_pct: 0.03
+  minimum_sample_size: 100
+  bootstrap_allocation_pct: 0.005
+
+execution:
+  maximum_slippage_bps: 20
+  stale_market_data_seconds: 10
+  price_deviation_tolerance_pct: 0.02
+  max_order_notional_pct: 0.03
+
+circuit_breakers:
+  error_threshold_per_minute: 5
+  consecutive_losses_limit: 5
+  volatility_spike_multiplier: 3.0
+
+restricted:
+  allow_shorts: false
+  allow_margin: false
+  allow_futures: false
+  allow_options: false
+  allow_leverage: false
+  hard_kill_switch: true

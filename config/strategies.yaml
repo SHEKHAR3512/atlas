@@ -1,0 +1,63 @@
+strategies:
+  - id: "trend_following_v1"
+    name: "Trend Following EMA/ADX"
+    family: "trend"
+    version: "1.0.0"
+    status: "APPROVED"
+    allocation_pct: 0.25
+    compatible_regimes:
+      - "bull_trend"
+      - "low_volatility"
+    parameters:
+      fast_ema: 20
+      slow_ema: 50
+      trend_ema: 200
+      adx_period: 14
+      adx_threshold: 20.0
+      atr_period: 14
+      atr_multiplier: 2.0
+
+  - id: "momentum_cross_sectional_v1"
+    name: "Cross-Sectional Momentum"
+    family: "momentum"
+    version: "1.0.0"
+    status: "APPROVED"
+    allocation_pct: 0.25
+    compatible_regimes:
+      - "bull_trend"
+    parameters:
+      lookback_days: 90
+      top_n: 3
+      volatility_window: 20
+      rebalance_frequency: 5
+
+  - id: "mean_reversion_rsi_v1"
+    name: "Mean Reversion RSI/Bollinger"
+    family: "mean_reversion"
+    version: "1.0.0"
+    status: "APPROVED"
+    allocation_pct: 0.25
+    compatible_regimes:
+      - "sideways"
+      - "low_volatility"
+    parameters:
+      rsi_period: 14
+      rsi_oversold: 30.0
+      rsi_overbought: 70.0
+      bb_period: 20
+      bb_std: 2.0
+      z_threshold: -1.5
+
+  - id: "breakout_donchian_v1"
+    name: "Donchian Breakout with Volume"
+    family: "breakout"
+    version: "1.0.0"
+    status: "APPROVED"
+    allocation_pct: 0.25
+    compatible_regimes:
+      - "bull_trend"
+      - "high_volatility"
+    parameters:
+      channel_period: 20
+      volume_factor: 1.25
+      atr_stop_multiplier: 1.5

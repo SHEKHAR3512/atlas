@@ -1,0 +1,43 @@
+research_lab:
+  enabled: true
+  max_concurrent_experiments: 2
+  sandbox_timeout_seconds: 60
+
+validation_thresholds:
+  min_trades: 50 # 100 preferred, 50 min for shorter historical subsets
+  min_sharpe: 1.0
+  min_sortino: 1.2
+  min_profit_factor: 1.25
+  max_drawdown_pct: 0.15
+  min_win_rate: 0.40
+  min_expectancy: 0.005 # 0.5% net per trade
+  max_validation_decay_pct: 0.35 # max 35% performance drop between in-sample and out-of-sample
+  max_parameter_sensitivity: 0.25 # max 25% change across adjacent parameters
+
+mutation_spaces:
+  momentum:
+    lookback_days: [30, 60, 90, 120]
+    top_n: [2, 3, 5]
+  trend:
+    fast_ema: [10, 20, 30]
+    slow_ema: [50, 100]
+    trend_ema: [200]
+    atr_multiplier: [1.5, 2.0, 2.5]
+  mean_reversion:
+    rsi_period: [10, 14, 21]
+    rsi_oversold: [25.0, 30.0, 35.0]
+    bb_period: [15, 20, 25]
+    bb_std: [1.8, 2.0, 2.2]
+  breakout:
+    channel_period: [15, 20, 30]
+    volume_factor: [1.1, 1.25, 1.5]
+
+monte_carlo:
+  simulations: 1000
+  confidence_level: 0.95
+  max_acceptable_ruin_prob: 0.01
+
+walk_forward:
+  train_window_days: 252 # 1 trading year
+  test_window_days: 63   # 1 quarter
+  folds: 3

@@ -1,0 +1,21 @@
+version: "nse_equity_v1"
+name: "NSE Cash Equities Delivery Standard Schedule"
+currency: "INR"
+
+brokerage:
+  type: "min_fixed_percent" # min(0.05%, Rs 20) or flat
+  percent: 0.0005 # 0.05%
+  max_fixed: 20.0 # max ₹20 per executed order
+
+stt_pct:
+  buy: 0.0010  # 0.1% delivery
+  sell: 0.0010 # 0.1% delivery
+
+exchange_txn_fee_pct: 0.0000345 # 0.00345% NSE cash
+sebi_turnover_fee_pct: 0.000001 # Rs 10 per crore (0.0001%)
+stamp_duty_buy_pct: 0.00015     # 0.015% on buy only
+gst_pct: 0.18                   # 18% on (brokerage + exchange + sebi)
+
+slippage:
+  default_bps: 10.0 # 0.10% default conservative slippage
+  impact_coefficient: 0.05 # square-root market impact parameter
